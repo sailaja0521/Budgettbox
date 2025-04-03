@@ -11,4 +11,5 @@ public interface ExpenseService {
    Expense findById(long expenseId);
     List<Expense>findAll(); // Method to get expenses by user ID
     List<Expense> getExpensesByUser(User user); 
+    void deleteExpense(long id);
 }

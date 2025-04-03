@@ -45,5 +45,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 	    public List<Expense> getExpensesByUser(User user) {
 	        return expenseRespository.findByUser(user);
 	    }
+	 @Override
+	 public void deleteExpense(long id)
+	 {
+		 expenseRespository.deleteById(id);
+	 }
+	 
 
 }
