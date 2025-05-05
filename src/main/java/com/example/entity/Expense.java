@@ -42,7 +42,7 @@ public class Expense {
 
     @Temporal(TemporalType.TIMESTAMP) // Specifies that this is a timestamp column
     @Column(name = "expense_date", nullable = false) // Date and time when the expense was made
-    private Date expenseDate;
+    private String expenseDate;
 
     public Expense() {
         // Default constructor (required by Hibernate)
@@ -85,7 +85,7 @@ public class Expense {
         this.description = description;
     }
 
-    public Date getExpenseDate() {
+    public String getExpenseDate() {
         return expenseDate;
     }
 

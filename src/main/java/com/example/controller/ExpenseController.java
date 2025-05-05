@@ -33,7 +33,6 @@ public class ExpenseController {
     @Autowired
     private UserService userService;
 
-    // ✅ Create Expense (POST)
     @PostMapping("/add")
     public ResponseEntity<?> addExpense(@RequestBody Expense expense, HttpSession session) throws ParseException {
         // Check if user is logged in
@@ -50,16 +49,19 @@ public class ExpenseController {
         // Convert String to Date
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date parsedDate = dateFormat.parse(expense.getExpenseDate());
-        // Create Expense Object
-        Expense expenses = new Expense();
-        expense.setUser(user);
-        expense.setAmount(expense.getAmount());
-        expense.setDescription(expense.getDescription());
-        expense.setExpenseDate(parsedDate);
+
+        // Create Expense Object and set properties
+        Expense newExpense = new Expense();
+        newExpense.setUser(user);
+        newExpense.setAmount(expense.getAmount());
+        newExpense.setDescription(expense.getDescription());
+        newExpense.setExpenseDate(parsedDate);
+
         // Save to Database
-        expenseService.addExpense(expense);
-        return ResponseEntity.status(HttpStatus.CREATED).body(expense);
+        expenseService.addExpense(newExpense);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newExpense);
     }
+
 
     // ✅ Get All Expenses of Logged-in User (GET)
     @GetMapping
